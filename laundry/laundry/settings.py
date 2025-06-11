@@ -37,6 +37,28 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'laundry_app',  # Custom app for laundry management
+    'rest_framework',  # Django REST Framework for API development
+    'corsheaders',  # For handling CORS in API requests
+    'django_extensions',  # Useful extensions for Django development
+    'debug_toolbar',  # Debug toolbar for development
+    'django.contrib.sites',  # For site management
+    'allauth',  # Django Allauth for user authentication
+    'allauth.account',  # Allauth account management
+    'allauth.socialaccount',  # Allauth social account management
+    'allauth.socialaccount.providers.google',  # Google social authentication
+    'allauth.socialaccount.providers.facebook',  # Facebook social authentication
+    'allauth.socialaccount.providers.twitter',  # Twitter social authentication
+    'allauth.socialaccount.providers.github',  # GitHub social authentication
+    'allauth.socialaccount.providers.linkedin',  # LinkedIn social authentication
+    'allauth.socialaccount.providers.instagram',  # Instagram social authentication
+    'allauth.socialaccount.providers.microsoft',  # Microsoft social authentication
+    'allauth.socialaccount.providers.apple',  # Apple social authentication
+    'allauth.socialaccount.providers.gitlab',  # GitLab social authentication
+    'allauth.socialaccount.providers.bitbucket',  # Bitbucket social authentication
+    'allauth.socialaccount.providers.spotify',  # Spotify social authentication
+    'allauth.socialaccount.providers.slack',  # Slack social authentication
+
 ]
 
 MIDDLEWARE = [
@@ -47,6 +69,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Middleware for CORS support
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Middleware for Django Debug Toolbar
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',  # Middleware for site management
+    'allauth.account.middleware.AccountMiddleware',  # Middleware for Allauth account management
+
 ]
 
 ROOT_URLCONF = 'laundry.urls'
@@ -115,8 +142,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Custom static files directory
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # React frontend
+    "https://your-production-domain.com",  # Production domain
+]
+# CORS_ALLOW_CREDENTIALS = True  # Uncomment if you need to allow credentials
+# Debug toolbar settings
+
